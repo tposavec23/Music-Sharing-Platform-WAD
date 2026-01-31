@@ -48,6 +48,12 @@ Uz backend razvoj, stekao sam i osnovno iskustvo rada s **Angularom** te impleme
 
 **Aplikacija**: http://spider.foi.hr:12160/  
 
+Test korisnici (username: password):
+
+- **Običan korisnik** - user: User123
+- **Administrator** - admin: Admin123
+- **Menadžer** - manager: Manager123
+
 ![MusicSharingPlatform-demo-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/10866125-d62e-43fa-8ea1-5e87a592d4ba)
 
 Cijeli **demo video**: https://youtu.be/52lW_3txkx0
