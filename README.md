@@ -1,12 +1,12 @@
 ## O projektu
 
-**Music Sharing Platform** je web aplikacija razvijena kao timski projekt u sklopu kolegija **Web Application Development (WAD)** na **Fakultetu organizacije i informatike (FOI)**, u suradnji s **University of Lodz – Faculty of Mathematics and Computer Science (UL-FMCS)**.
+**Music Sharing Platform** je web aplikacija razvijena kao timski projekt, u suradnji s kolegom iz Poljske, u sklopu kolegija **Web Application Development (WAD)** na **Fakultetu organizacije i informatike (FOI)**, uz međunarodnu suradnju s **University of Lodz – Faculty of Mathematics and Computer Science (UL-FMCS)**. 
 
-Cilj projekta bio je izraditi **Single Page Application (SPA)** koja pokriva potrebe različitih tipova korisnika — od standardnih korisničkih funkcionalnosti do administratorskih i managerskih mogućnosti. Sustav koristi role-based pristup kako bi se omogućile različite razine pristupa i upravljanja sadržajem.
+Cilj projekta bio je izraditi **Single Page Application (SPA)** koja pokriva potrebe različitih tipova korisnika, od standardnih korisničkih funkcionalnosti do administratorskih i menadžerskih mogućnosti. Sustav koristi role-based pristup kako bi se omogućile različite razine pristupa i upravljanja sadržajem.
 
 ### Moj doprinos:
 
-Projekt sam razvijao u suradnji s kolegom iz Poljske. Bio sam zadužen za izradu kompletnog backend dijela aplikacije (REST API), uključujući izradu ER modela baze podataka, pripremu REST dokumentacije te integraciju ključnih dijelova frontenda s backend logikom.
+Bio sam zadužen za izradu kompletnog backend dijela aplikacije (REST API) koristeći **Express.js** i **TypeScript**, uključujući izradu ER modela baze podataka i implementaciju rada sa **SQLite** bazom. Također sam pripremio REST dokumentaciju, testirao endpointove kroz Postman te integrirao ključne dijelove **Angular** frontenda s backend logikom.
 
 ## Tehnološki stog
 
@@ -30,9 +30,9 @@ Projekt sam razvijao u suradnji s kolegom iz Poljske. Bio sam zadužen za izradu
 ## Što sam naučio
 
 
-Tijekom razvoja ovog projekta stekao sam praktično iskustvo u izradi backend sustava, s posebnim naglaskom na rad sa sesijama, autorizacijom te sigurnosnim aspektima aplikacije. Kroz planiranje i implementaciju REST API-ja u TypeScript/Express okruženju dodatno sam unaprijedio razumijevanje dizajna API-ja koji je čitljiv, strukturiran i jednostavan za integraciju s frontend aplikacijom. Također sam se upoznao s korištenjem javno dostupnih API-ja za dohvat podataka, primjerice s automatskim preuzimanjem metapodataka pjesama putem YouTube poveznica.
+Tijekom razvoja ovog projekta stekao sam praktično iskustvo u izradi backend sustava, s posebnim naglaskom na rad sa sesijama, autorizacijom te sigurnosnim aspektima aplikacije. Kroz planiranje i implementaciju REST API-ja u **TypeScript/Express** okruženju dodatno sam unaprijedio razumijevanje dizajna API-ja koji je čitljiv, strukturiran i jednostavan za integraciju s frontend aplikacijom. Također sam se upoznao s korištenjem javno dostupnih API-ja za dohvat podataka, primjerice s automatskim preuzimanjem metapodataka pjesama putem YouTube poveznica.
 
-Uz backend razvoj, stekao sam i osnovno iskustvo rada s Angularom te implementacijom komunikacije između frontenda i backenda putem API poziva. Dodatno sam razvio razumijevanje implementacije filtriranja i paginacije na backend strani kako bi dohvat podataka bio učinkovitiji i pregledniji. Radom s SQLite bazom podataka dodatno sam ojačao znanje relacijskog modeliranja i upravljanja podacima unutar aplikacije. Također sam naučio implementirati izvoz podataka u PDF format (npr. audit logova) korištenjem biblioteke PDFKit. Posebno vrijednim smatram iskustvo kontinuirane komunikacije na engleskom jeziku i koordinacije rada u suradnji s kolegom iz Poljske.
+Uz backend razvoj, stekao sam i osnovno iskustvo rada s **Angularom** te implementacijom komunikacije između frontenda i backenda putem API poziva. Dodatno sam razvio razumijevanje implementacije filtriranja i paginacije na backend strani kako bi dohvat podataka bio učinkovitiji i pregledniji. Radom s **SQLite** bazom podataka dodatno sam ojačao znanje relacijskog modeliranja i upravljanja podacima unutar aplikacije. Također sam naučio implementirati izvoz podataka u PDF format (npr. audit logova) korištenjem biblioteke **PDFKit**. Posebno vrijednim smatram iskustvo kontinuirane komunikacije na engleskom jeziku i koordinacije rada u suradnji s kolegom iz Poljske.
 
 ## Ideje za unapređenje
 
