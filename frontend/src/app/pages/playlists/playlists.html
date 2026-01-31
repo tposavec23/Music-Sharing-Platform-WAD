@@ -1,0 +1,69 @@
+<div class="catalog-container">
+  <header class="catalog-header">
+    <div class="title-area">
+      <h1>Music Catalog</h1>
+      <p class="subtitle">Discover new sounds from the community</p>
+    </div>
+
+    <div class="controls">
+      <div class="search-box">
+        <input 
+          type="text" 
+          [(ngModel)]="searchTerm" 
+          (input)="onFilterChange()" 
+          placeholder="Search playlists..." 
+          class="search-input">
+      </div>
+      
+      <select [(ngModel)]="selectedGenre" (change)="onFilterChange()" class="genre-select">
+        <option [ngValue]="null">All Genres</option>
+        @for (g of genres; track g.genre_id) {
+          <option [ngValue]="g.genre_id">{{ g.name }}</option>
+        }
+      </select>
+
+      <select [(ngModel)]="sortBy" (change)="onSortChange()" class="genre-select" style="min-width: 160px;">
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="az">Name (A-Z)</option>
+        <option value="za">Name (Z-A)</option>
+        <option value="likes">Most Popular</option>
+      </select>
+    </div>
+  </header>
+
+  <hr class="divider">
+
+  @if (loading) {
+    <div class="loader">Loading vibes...</div>
+  }
+
+  @if (!loading && playlists.length === 0) {
+    <div class="empty-state">
+      <p>No playlists found. Try a different search!</p>
+    </div>
+  }
+
+  <div class="playlist-grid">
+    @for (playlist of playlists; track playlist.playlist_id) {
+      <div class="playlist-card" [routerLink]="['/playlists', playlist.playlist_id]">
+        <div class="card-image">
+          <span class="genre-badge">{{ getGenreLabel(playlist) }}</span>
+          @if (playlist.image_path) {
+            <img [src]="'/' + playlist.image_path" alt="Cover" class="cover-image">
+          }
+          <div class="play-overlay">
+            <span class="play-icon">▶</span>
+          </div>
+        </div>
+        
+        <div class="card-content">
+          <h3>{{ playlist.name }}</h3>
+          <p class="author">By {{ playlist.owner_username || 'Anonymous' }}</p>
+          <p class="description">{{ playlist.description || 'No description.' }}</p>
+        </div>
+      </div>
+    }
+  </div>
+
+</div>

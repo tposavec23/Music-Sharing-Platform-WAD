@@ -1,0 +1,39 @@
+<div class="info-container">
+  <div class="page-header">
+    <h1>About This Project</h1>
+    <p>Music Sharing Platform - WAD Project 2026</p>
+  </div>
+
+  <section class="team-section">
+    <h2>Project Team</h2>
+    <div class="team-cards">
+      @for (member of teamMembers; track member.name) {
+        <div class="team-card">
+          <div class="member-icon">
+            <span class="material-icons">person</span>
+          </div>
+          <div class="member-info">
+            <h3>{{ member.name }}</h3>
+            <span class="role">{{ member.role }}</span>
+            <p class="faculty">{{ member.faculty }}</p>
+            <p class="university">{{ member.university }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2>Project Documentation</h2>
+    <div class="docs-buttons">
+      <a href="/assets/docs/er-model.pdf" target="_blank" class="doc-btn">
+        <span class="material-icons">schema</span>
+        <span>ER Model</span>
+      </a>
+      <a href="/assets/docs/rest-documentation.pdf" target="_blank" class="doc-btn">
+        <span class="material-icons">description</span>
+        <span>REST Documentation</span>
+      </a>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,96 @@
+<div class="home-container">
+  
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to WAD Music</h1>
+      <p>Discover, create, and share your favorite vibes.</p>
+      
+      <div class="buttons">
+        <button routerLink="/playlists" class="primary-btn">Browse Catalog</button>
+        
+        <button 
+          routerLink="/my-playlists" 
+          [disabled]="!authService.currentUser"
+          class="secondary-btn"
+          [title]="!authService.currentUser ? 'Log in to access your library' : ''">
+          My Library
+        </button>
+      </div>
+    </div>
+  </section>
+
+  @if (!loading) {
+    <section class="analytics-section">
+      <h2 class="section-title">Global Analytics</h2>
+
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h3>Top Genres <span class="chart-subtitle">(by playlist count)</span></h3>
+          <div class="doughnut-container">
+            <canvas #genreChart></canvas>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <h3>Most Popular Playlists <span class="chart-subtitle">(by likes)</span></h3>
+          <div class="bar-container">
+            <canvas #playlistChart></canvas>
+          </div>
+          @if (trending.length === 0) { <p class="no-data">No trending data yet.</p> }
+        </div>
+      </div>
+    </section>
+  }
+
+  @if (loading) {
+    <div class="loader">Loading the charts...</div>
+  }
+
+  @if (trending.length > 0) {
+    <section class="shelf">
+      <div class="shelf-header">
+        <h2>Trending Now</h2>
+        <a routerLink="/playlists" class="see-all">See All</a>
+      </div>
+      <div class="scroll-row">
+        @for (p of trending; track p.playlist_id) {
+          <div class="mini-card" [routerLink]="['/playlists', p.playlist_id]">
+            <div class="card-img gradient-1">
+              @if (p.image_path) {
+                <img [src]="'/' + p.image_path" alt="Cover" class="cover-img">
+              } @else {
+                <span>{{ p.name.charAt(0) | uppercase }}</span>
+              }
+            </div>
+            <p class="card-title">{{ p.name }}</p>
+            <p class="card-sub">By {{ p.owner_username || p.creator || 'Unknown' }}</p>
+          </div>
+        }
+      </div>
+    </section>
+  }
+
+  @if (newReleases.length > 0) {
+    <section class="shelf">
+      <div class="shelf-header">
+        <h2>New Releases</h2>
+        <a routerLink="/playlists" class="see-all">See All</a>
+      </div>
+      <div class="scroll-row">
+        @for (p of newReleases; track p.playlist_id) {
+          <div class="mini-card" [routerLink]="['/playlists', p.playlist_id]">
+            <div class="card-img gradient-2">
+              @if (p.image_path) {
+                <img [src]="'/' + p.image_path" alt="Cover" class="cover-img">
+              } @else {
+                <span>{{ p.name.charAt(0) | uppercase }}</span>
+              }
+            </div>
+            <p class="card-title">{{ p.name }}</p>
+            <p class="card-sub">By {{ p.owner_username || p.creator || 'Unknown' }}</p>
+          </div>
+        }
+      </div>
+    </section>
+  }
+</div>

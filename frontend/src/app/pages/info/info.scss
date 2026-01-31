@@ -1,0 +1,163 @@
+:host {
+  display: block;
+}
+
+.info-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--text-main);
+  animation: fadeIn 0.5s ease-out;
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--primary-color);
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin: 0;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: white;
+      text-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+    }
+
+    p {
+      color: var(--text-sub);
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      font-family: 'Roboto', sans-serif;
+    }
+  }
+
+  .team-section {
+    margin-bottom: 3rem;
+
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .team-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .team-card {
+      background: var(--bg-panel);
+      border: 1px solid #333;
+      border-radius: var(--radius-sharp);
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+
+      .member-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #1e222e, #0f1219);
+        border: 1px solid var(--primary-color);
+        border-radius: var(--radius-sharp);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+
+        .material-icons {
+          font-size: 2.5rem;
+          color: var(--primary-color);
+        }
+      }
+
+      .member-info {
+        h3 {
+          margin: 0 0 0.5rem 0;
+          font-family: 'Orbitron', sans-serif;
+          font-size: 1.1rem;
+          color: white;
+        }
+
+        .role {
+          display: inline-block;
+          background: rgba(0, 229, 255, 0.1);
+          border: 1px solid var(--primary-color);
+          color: var(--primary-color);
+          font-family: 'Orbitron', sans-serif;
+          font-size: 0.7rem;
+          padding: 4px 10px;
+          border-radius: var(--radius-sharp);
+          font-weight: bold;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          margin-bottom: 0.5rem;
+        }
+
+        .faculty, .university {
+          margin: 0.25rem 0;
+          color: var(--text-sub);
+          font-family: 'Roboto', sans-serif;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+
+  .docs-section {
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .docs-buttons {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .doc-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--bg-panel);
+      border: 1px solid #333;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: var(--radius-sharp);
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+
+      .material-icons {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+      }
+
+      &:hover {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

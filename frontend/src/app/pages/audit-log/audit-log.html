@@ -1,0 +1,105 @@
+<div class="audit-log-container">
+  <div class="page-header">
+    <div class="header-content">
+      <h1>Audit Log</h1>
+      <p>Track all system activities and user actions</p>
+    </div>
+    <button class="export-btn" (click)="exportPdf()">
+      <span class="material-icons">picture_as_pdf</span>
+      Export PDF
+    </button>
+  </div>
+
+  <div class="filters-section">
+    <div class="filter-group">
+      <label>Action Type</label>
+      <select [(ngModel)]="selectedAction" class="filter-select">
+        <option value="">All Actions</option>
+        @for (action of actions; track action.action) {
+          <option [value]="action.action">{{ formatAction(action.action) }} ({{ action.count }})</option>
+        }
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label>User ID</label>
+      <input
+        type="number"
+        [(ngModel)]="userIdFilter"
+        placeholder="Enter user ID"
+        class="filter-input"
+      >
+    </div>
+
+    <div class="filter-actions">
+      <button class="apply-btn" (click)="applyFilters()">Apply Filters</button>
+      <button class="clear-btn" (click)="clearFilters()">Clear</button>
+    </div>
+  </div>
+
+  @if (loading) {
+    <div class="loader">Loading audit log...</div>
+  }
+
+  @if (error) {
+    <div class="error-message">{{ error }}</div>
+  }
+
+  @if (!loading && !error) {
+    <div class="results-info">
+      Showing {{ entries.length }} of {{ totalItems }} entries
+    </div>
+
+    <div class="data-table">
+      <div class="table-header">
+        <span class="col-id">ID</span>
+        <span class="col-action">Action</span>
+        <span class="col-user">User</span>
+        <span class="col-time">Timestamp</span>
+      </div>
+
+      @for (entry of entries; track entry.id) {
+        <div class="table-row">
+          <span class="col-id">{{ entry.id }}</span>
+          <span class="col-action">
+            <span class="action-badge">{{ formatAction(entry.action) }}</span>
+          </span>
+          <span class="col-user">{{ entry.username || 'User #' + entry.user_id }}</span>
+          <span class="col-time">{{ formatDate(entry.timestamp) }}</span>
+        </div>
+      } @empty {
+        <div class="empty-row">No audit log entries found</div>
+      }
+    </div>
+
+    @if (totalPages > 1) {
+      <div class="pagination">
+        <button
+          class="page-btn"
+          (click)="prevPage()"
+          [disabled]="currentPage === 1"
+        >
+          <span class="material-icons">chevron_left</span>
+        </button>
+
+        @for (page of getPageNumbers(); track page) {
+          <button
+            class="page-btn"
+            [class.active]="page === currentPage"
+            (click)="goToPage(page)"
+          >
+            {{ page }}
+          </button>
+        }
+
+        <button
+          class="page-btn"
+          (click)="nextPage()"
+          [disabled]="currentPage === totalPages"
+        >
+          <span class="material-icons">chevron_right</span>
+        </button>
+      </div>
+    }
+  }
+</div>

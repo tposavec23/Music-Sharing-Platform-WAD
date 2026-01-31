@@ -1,0 +1,52 @@
+{
+  "name": "wad-project",
+  "version": "1.0.0",
+  "description": "Music Playlist Sharing Platform",
+  "main": "dist/index.js",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --respawn --watch .env src/index.ts",
+    "build": "npm --prefix frontend run build && tsc",
+    "start": "node dist/index.js",
+    "deploy": "node deploy.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tposavec23/WAD-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tposavec23/WAD-Project/issues"
+  },
+  "homepage": "https://github.com/tposavec23/WAD-Project#readme",
+  "dependencies": {
+    "@faker-js/faker": "^10.1.0",
+    "connect-sqlite3": "^0.9.16",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.2.1",
+    "express-session": "^1.18.2",
+    "formidable": "^3.5.4",
+    "morgan": "^1.10.1",
+    "passport": "^0.7.0",
+    "passport-json": "^1.2.0",
+    "pdfkit": "^0.17.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@types/connect-sqlite3": "^0.9.6",
+    "@types/express": "^5.0.3",
+    "@types/express-session": "^1.18.2",
+    "@types/formidable": "^3.4.6",
+    "@types/morgan": "^1.9.10",
+    "@types/passport": "^1.0.17",
+    "@types/pdfkit": "^0.17.4",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3"
+  }
+}

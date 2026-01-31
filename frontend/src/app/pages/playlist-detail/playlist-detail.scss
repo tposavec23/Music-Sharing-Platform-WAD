@@ -1,0 +1,208 @@
+:host {
+  display: block;
+  padding-bottom: 4rem;
+}
+
+.content-container {
+  color: var(--text-main);
+}
+
+.hero-header {
+  height: 320px;
+  background: linear-gradient(180deg, rgba(0, 229, 255, 0.05) 0%, var(--bg-dark) 100%);
+  padding: 2rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+
+  .cover-art {
+    width: 232px; height: 232px;
+    background: var(--primary-gradient);
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 0;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    .icon { font-size: 5rem; }
+
+    .cover-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .playlist-info {
+    .label { 
+      font-family: 'Orbitron', sans-serif; 
+      font-size: 0.75rem; font-weight: 700; 
+      color: var(--primary-color); 
+      letter-spacing: 2px; 
+    }
+    .title { 
+      font-family: 'Orbitron', sans-serif; 
+      font-size: 4rem; font-weight: 900; 
+      margin: 0; text-transform: uppercase; 
+    }
+    .desc { color: var(--text-sub); margin: 0.5rem 0 1rem; font-family: 'Roboto', sans-serif; }
+    .meta { 
+      display: flex; align-items: center; gap: 0.6rem; 
+      font-size: 0.9rem; font-weight: 700; 
+      .dot { color: var(--primary-color); }
+    }
+  }
+}
+
+.action-bar {
+  padding: 1.5rem 2rem;
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between;
+
+  .left-actions {
+    display: flex; 
+    align-items: center; 
+    gap: 1.5rem; 
+
+    .play-btn {
+      width: 56px; height: 56px; border-radius: 0;
+      background: var(--primary-color); color: black; border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      &:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--primary-color); }
+      .material-icons { font-size: 32px; }
+    }
+
+    .icon-btn {
+      background: transparent; border: none; color: var(--text-sub); cursor: pointer;
+      transition: color 0.2s;
+      &:hover { color: white; }
+      &.active { color: var(--primary-color); text-shadow: 0 0 10px var(--primary-color); }
+      .material-icons { font-size: 32px; }
+    }
+  }
+
+  .search-wrapper {
+    position: relative;
+    input {
+      background: #000; border: 1px solid #333; 
+      padding: 0.7rem 1rem 0.7rem 2.2rem;
+      color: white; width: 220px; font-family: 'Roboto', sans-serif;
+      &:focus { border-color: var(--primary-color); outline: none; }
+    }
+    .search-icon { position: absolute; left: 10px; top: 10px; color: var(--primary-color); font-size: 18px; }
+  }
+}
+
+.add-song-panel {
+  margin: 0 2rem 2rem 2rem;
+  background: var(--bg-panel); padding: 1.5rem; border: 1px solid #222;
+  h3 { 
+    color: var(--primary-color); font-family: 'Orbitron', sans-serif; 
+    font-size: 0.9rem; margin-bottom: 1rem; 
+  }
+  
+  .input-row {
+    display: flex; gap: 0.5rem;
+    align-items: center;
+
+    .dark-input {
+      background: #000; border: 1px solid #333;
+      padding: 0.5rem 0.7rem; color: white; border-radius: 0;
+      height: 34px; font-size: 0.85rem; flex: 1;
+      &:focus { border-color: var(--primary-color); outline: none; }
+      &[readonly] { opacity: 0.6; }
+    }
+
+    .url-input { flex: 1.5; }
+
+    .loading-indicator {
+      color: var(--primary-color);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      animation: pulse 1s infinite;
+    }
+
+    .custom-dropdown {
+      flex: 1; background: #000; border: 1px solid #333; position: relative; cursor: pointer;
+      display: flex; align-items: center; padding: 0 0.8rem; height: 45px;
+      .selected-value { width: 100%; display: flex; justify-content: space-between; font-size: 0.8rem; }
+      .dropdown-options {
+        position: absolute; top: 110%; left: -1px; width: calc(100% + 2px); 
+        background: #111; border: 1px solid var(--primary-color); z-index: 100;
+        .option { padding: 0.7rem; font-size: 0.8rem; &:hover { background: var(--primary-color); color: black; } }
+      }
+    }
+
+    .time-counter-group {
+      display: flex; align-items: center; gap: 12px; height: 45px;
+      .timer-icon { color: var(--primary-color); font-size: 24px; }
+
+      .time-inputs {
+        display: flex; align-items: center; gap: 6px;
+        .time-input {
+          width: 70px; height: 45px; background: #000; border: 1px solid #333;
+          color: white; font-family: 'Roboto Mono', monospace;
+          text-align: center; font-size: 1.2rem; border-radius: 0;
+          &:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 10px rgba(0, 229, 255, 0.2); }
+        }
+        .separator { color: white; font-weight: bold; font-size: 1.2rem; }
+      }
+    }
+
+    .add-btn {
+      background: var(--primary-color); color: black; border: none; padding: 0 1.5rem;
+      height: 34px; font-weight: 700; cursor: pointer; text-transform: uppercase;
+      font-family: 'Orbitron', sans-serif; font-size: 0.85rem;
+      &:hover { box-shadow: 0 0 15px var(--primary-color); }
+      &:disabled { opacity: 0.5; cursor: not-allowed; }
+    }
+  }
+}
+
+.tracks-table {
+  padding: 0 2rem;
+  .glowing-line { 
+    height: 1px; background: var(--primary-color); 
+    opacity: 0.3; box-shadow: 0 0 10px var(--primary-color); 
+    margin-bottom: 1rem; 
+  }
+
+  .row {
+    display: grid; grid-template-columns: 50px 1fr 180px 100px;
+    padding: 0.7rem 1rem; align-items: center; color: var(--text-sub);
+    
+    &.header {
+      color: var(--primary-color); font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem; letter-spacing: 1px;
+      .col-time .material-icons { margin-right: 43px; }
+    }
+    
+    &.item {
+      cursor: pointer; border-bottom: 1px solid #111;
+      &:hover {
+        background: rgba(255,255,255,0.02); color: white;
+        .col-num { .num { display: none; } .play-icon { display: block; } }
+        .col-time .delete-btn { opacity: 1; color: #ff4444; }
+      }
+    }
+    
+    .col-num .play-icon { display: none; color: var(--primary-color); }
+    .col-title { .song-name { color: white; font-weight: 500; } .artist-name { font-size: 0.85rem; } }
+    .col-platform .badge { border: 1px solid #333; padding: 2px 8px; font-size: 0.6rem; text-transform: uppercase; }
+    .col-time {
+      display: flex; justify-content: flex-end; align-items: center; gap: 1rem;
+      .time-text { font-family: 'Roboto Mono', monospace; font-size: 0.9rem; }
+      .delete-btn { background: transparent; border: none; color: #ff4444; cursor: pointer; font-size: 1rem; opacity: 0; }
+    }
+  }
+}
+
+.empty-state { text-align: center; padding: 3rem; color: var(--text-sub); font-family: 'Orbitron', sans-serif; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

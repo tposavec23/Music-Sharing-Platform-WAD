@@ -1,0 +1,46 @@
+<div class="catalog-container">
+  <header class="catalog-header">
+    <div class="title-area">
+      <h1>Favorites</h1>
+      <p class="subtitle">Playlists you have saved to your collection</p>
+    </div>
+  </header>
+
+  <hr class="divider">
+
+  @if (loading) {
+    <div class="loader">Loading favorites...</div>
+  }
+
+  @if (!loading && favorites.length === 0) {
+    <div class="empty-state">
+      <span class="material-icons" style="font-size: 4rem; margin-bottom: 1rem; color: var(--primary-color); opacity: 0.3;">favorite_border</span>
+      <p>You haven't favorited any playlists yet.</p>
+      <button class="browse-btn" routerLink="/playlists">Explore Music</button>
+    </div>
+  }
+
+  <div class="playlist-grid">
+    @for (playlist of favorites; track playlist.playlist_id) {
+      <div class="playlist-card" (click)="openPlaylist(playlist.playlist_id)">
+        <div class="card-image">
+          @if (playlist.genres) {
+            <span class="genre-badge">{{ playlist.genres }}</span>
+          }
+          @if (playlist.image_path) {
+            <img [src]="'/' + playlist.image_path" alt="Cover" class="cover-image">
+          }
+          <div class="play-overlay">
+            <span class="play-icon">▶</span>
+          </div>
+        </div>
+
+        <div class="card-content">
+          <h3>{{ playlist.name }}</h3>
+          <p class="author">By {{ playlist.owner_username || 'Anonymous' }}</p>
+          <p class="description">{{ playlist.description || 'No description.' }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</div>

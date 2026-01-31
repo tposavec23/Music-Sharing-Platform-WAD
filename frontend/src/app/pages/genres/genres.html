@@ -1,0 +1,59 @@
+<div class="catalog-container">
+  
+  <header class="catalog-header">
+    <div class="title-area">
+      <h1>Genre Management</h1>
+      <p class="subtitle">Define the musical categories for the platform.</p>
+    </div>
+    
+    <div class="controls">
+      <button (click)="toggleCreate()" class="create-btn">+ Add Genre</button>
+    </div>
+  </header>
+
+  <hr class="divider">
+
+  @if (isCreateVisible) {
+    <div class="modal-overlay">
+      <div class="modal-card">
+        <h2>New Genre</h2>
+        
+        <input 
+          [(ngModel)]="newGenreName" 
+          placeholder="Genre Name (e.g. Synthwave)" 
+          class="modal-input"
+          (keyup.enter)="submitCreate()"> <div class="modal-actions">
+          <button (click)="toggleCreate()" class="cancel-btn">Cancel</button>
+          <button (click)="submitCreate()" class="save-btn">Create</button>
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (genres.length === 0) {
+    <div class="empty-state">
+      <p>No genres found. Create one to get started!</p>
+    </div>
+  }
+
+  <div class="genre-grid">
+    @for (genre of genres; track genre.genre_id; let i = $index) {
+      <div class="genre-card color-{{ i % 5 }}">
+        <div class="card-content">
+          <h2>{{ genre.name }}</h2>
+        </div>
+
+        <div class="actions">
+          <button class="icon-btn edit" (click)="editGenre(genre)" title="Rename">
+            ✎
+          </button>
+          
+          <button class="icon-btn delete" (click)="deleteGenre(genre.genre_id)" title="Delete">
+            🗑️
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+
+</div>

@@ -1,0 +1,121 @@
+.login-container {
+  box-sizing: border-box;
+  padding: 2rem; 
+  width: 100%;
+  color: white;
+  background: var(--bg-panel);
+  
+  .header {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    h2 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: var(--primary-color);
+      text-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
+    }
+
+    .subtitle {
+      color: var(--text-sub);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      text-transform: none; 
+    }
+  }
+
+  .form-body {
+    .error-banner {
+      background: rgba(255, 42, 42, 0.1);
+      border: 1px solid #ff2a2a;
+      color: #ff2a2a;
+      padding: 0.7rem;
+      font-size: 0.8rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .input-group {
+      margin-bottom: 1.5rem;
+
+      label {
+        display: block;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 0.7rem;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.85rem;
+        font-size: 0.95rem;
+        background: var(--bg-dark);
+        border: 1px solid #333;
+        color: white;
+        
+        &::placeholder {
+          color: #666;
+        }
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      width: 100%;
+
+      button {
+        flex: 1 1 0px; 
+        min-width: 0; 
+        padding: 0.9rem 0;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: var(--radius-sharp);
+      }
+
+      .btn-login {
+        margin: 0 !important;
+        background: var(--primary-gradient);
+        color: black !important;
+        border: none;
+      }
+
+      .btn-cancel {
+        background: transparent;
+        color: var(--text-sub);
+        border: 1px solid #333;
+        
+        &:hover {
+          color: white;
+          border-color: white;
+        }
+      }
+    }
+
+    .footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      text-transform: none;
+
+      .highlight {
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-left: 4px;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

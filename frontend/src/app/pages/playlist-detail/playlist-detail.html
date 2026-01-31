@@ -1,0 +1,103 @@
+@if (playlist) {
+  <div class="content-container">
+    
+    <div class="hero-header">
+      <div class="cover-art shadow">
+        @if (playlist.image_path) {
+          <img [src]="'/' + playlist.image_path" alt="Cover" class="cover-image">
+        } @else {
+          <span class="icon">🎵</span>
+        }
+      </div>
+
+      <div class="playlist-info">
+        <span class="label">PLAYLIST</span>
+        <h1 class="title">{{ playlist.name }}</h1>
+        <p class="desc">{{ playlist.description || 'No description provided.' }}</p>
+        
+        <div class="meta">
+          <span class="owner">By {{ playlist.owner_username || playlist.creator || 'Unknown' }}</span>
+          <span class="dot">•</span>
+          <span class="count">{{ songs.length }} songs</span>
+          <span class="dot">•</span>
+          <span class="privacy">{{ playlist.is_public ? 'Public' : 'Private' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-bar">
+      <div class="left-actions">
+        <button class="play-btn" (click)="playFirst()" title="Play">
+          <span class="material-icons">play_arrow</span>
+        </button>
+
+        <button class="icon-btn" (click)="toggleLike()" [class.active]="isLiked">
+          <span class="material-icons">{{ isLiked ? 'thumb_up' : 'thumb_up_off_alt' }}</span>
+        </button>
+
+        <button class="icon-btn" (click)="toggleFavorite()" [class.active]="isFavorited">
+          <span class="material-icons">{{ isFavorited ? 'favorite' : 'favorite_border' }}</span>
+        </button>
+      </div>
+
+      <div class="search-wrapper">
+        <span class="material-icons search-icon">search</span>
+        <input type="text" placeholder="Search in playlist..." [(ngModel)]="searchTerm">
+      </div>
+    </div>
+
+    @if (canEdit()) {
+      <div class="add-song-panel">
+        <h3>Add Song</h3>
+        <div class="input-row">
+          <input [(ngModel)]="url" (paste)="onUrlChange()" (change)="onUrlChange()" placeholder="Paste YouTube or Spotify Link" class="dark-input url-input">
+          <input [(ngModel)]="title" placeholder="Title" class="dark-input">
+          <input [(ngModel)]="artist" placeholder="Artist" class="dark-input">
+          <button (click)="addSong()" [disabled]="!url || !title" class="add-btn">Add</button>
+        </div>
+      </div>
+    }
+
+    <div class="tracks-table">
+      <div class="row header">
+        <div class="col-num">#</div>
+        <div class="col-title">TITLE</div>
+        <div class="col-platform">PLATFORM</div> 
+        <div class="col-time"><span class="material-icons">schedule</span></div>
+      </div>
+
+      <div class="glowing-line"></div>
+
+      @for (song of filteredSongs; track song.song_id; let i = $index) {
+        <div class="row item" (click)="openSong(song.url)">
+          
+          <div class="col-num">
+            <span class="num">{{ i + 1 }}</span>
+            <span class="play-icon">▶</span>
+          </div>
+          
+          <div class="col-title">
+            <div class="song-name">{{ song.title }}</div>
+            <div class="artist-name">{{ song.artist }}</div>
+          </div>
+
+          <div class="col-platform">
+            <span class="badge">{{ song.platform === 'youtube' ? 'YouTube' : 'Spotify' }}</span>
+          </div>
+          
+          <div class="col-time">
+            <span class="time-text">{{ formatDuration(song.duration) }}</span>
+            @if (canEdit()) {
+              <button class="delete-btn" (click)="$event.stopPropagation(); deleteSong(song.song_id)">✕</button>
+            }
+          </div>
+        </div>
+      } @empty {
+        <div class="empty-state">
+          <p>No songs found in this playlist.</p>
+        </div>
+      }
+    </div>
+
+  </div>
+}

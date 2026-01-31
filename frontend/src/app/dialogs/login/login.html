@@ -1,0 +1,79 @@
+<div class="login-container">
+
+  <div class="header">
+    <h2>{{ mode === 'login' ? 'Welcome Back' : 'Create Account' }}</h2>
+    <p class="subtitle">
+      {{ mode === 'login' ? 'Sign in to manage your music, playlists, and favorites.' : 'Join WAD Music and start creating playlists.' }}
+    </p>
+  </div>
+
+  <div class="form-body">
+
+    @if (error) {
+      <div class="error-banner">
+        {{ error }}
+      </div>
+    }
+
+    <div class="input-group">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        id="username"
+        [(ngModel)]="username"
+        (keyup.enter)="onSubmit()"
+        placeholder="e.g. music_fan_2026"
+        autofocus>
+    </div>
+
+    @if (mode === 'register') {
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="email"
+          (keyup.enter)="onSubmit()"
+          placeholder="your@email.com">
+      </div>
+    }
+
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="password"
+        (keyup.enter)="onSubmit()"
+        placeholder="Enter your password">
+    </div>
+
+    @if (mode === 'register') {
+      <div class="input-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          [(ngModel)]="confirmPassword"
+          (keyup.enter)="onSubmit()"
+          placeholder="Confirm your password">
+      </div>
+    }
+
+    <div class="actions">
+      <button class="btn-cancel" (click)="onCancel()" [disabled]="loading">Cancel</button>
+      <button class="btn-login" (click)="onSubmit()" [disabled]="loading">
+        {{ loading ? 'Please wait...' : (mode === 'login' ? 'Login' : 'Register') }}
+      </button>
+    </div>
+
+    <div class="footer">
+      @if (mode === 'login') {
+        <p>Don't have an account? <span class="highlight" (click)="toggleMode()">Register</span></p>
+      } @else {
+        <p>Already have an account? <span class="highlight" (click)="toggleMode()">Login</span></p>
+      }
+    </div>
+
+  </div>
+</div>

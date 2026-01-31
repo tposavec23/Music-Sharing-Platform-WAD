@@ -1,0 +1,137 @@
+:root {
+  --primary-color: #00e5ff; 
+  --primary-gradient: linear-gradient(135deg, #00e5ff 0%, #2979ff 100%);
+  --bg-dark: #0a0e14; 
+  --bg-panel: #141a26; 
+  --text-main: #ffffff;
+  --text-sub: #b0bec5; 
+  --radius-sharp: 0px; 
+}
+
+body {
+  margin: 0; padding: 0;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif; 
+  letter-spacing: 1px;
+  color: white;
+  text-transform: uppercase;
+}
+
+button {
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  transition: all 0.2s ease-in-out;
+}
+
+.add-btn, .login-btn, .save-btn, .primary-btn, .btn-login {
+  background: var(--primary-gradient) !important;
+  color: black !important; 
+  border-radius: var(--radius-sharp) !important;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.4); 
+  border: none;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.7);
+    filter: brightness(1.1);
+  }
+}
+
+input, select, textarea {
+  background-color: var(--bg-panel) !important;
+  border: 1px solid #2c3e50 !important;
+  border-radius: var(--radius-sharp) !important;
+  color: white !important;
+  font-family: 'Roboto', sans-serif;
+  padding: 10px;
+
+  &:focus {
+    border-color: var(--primary-color) !important;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.3);
+  }
+}
+
+.row.header {
+  color: var(--primary-color) !important;
+  font-family: 'Orbitron', sans-serif;
+  border-bottom: 1px solid #2c3e50 !important;
+}
+
+.row.item:hover {
+  background-color: rgba(0, 229, 255, 0.08) !important; 
+  border-left: 2px solid var(--primary-color);
+}
+
+.custom-dialog-container, .cyber-dialog {
+  
+  .mdc-dialog__surface {
+    background-color: var(--bg-dark) !important;
+    border: 2px solid var(--primary-color) !important;
+    border-radius: 0px !important; 
+    box-shadow: 0 0 50px rgba(0, 229, 255, 0.3) !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .mat-mdc-dialog-content {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-height: none !important;
+    background: transparent !important;
+  }
+
+  &:focus-visible {
+    outline: none !important;
+  }
+}
+
+.cdk-overlay-backdrop-showing {
+  backdrop-filter: blur(12px) !important;
+  background: rgba(0, 0, 0, 0.85) !important;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 14px !important;
+  margin-top: 1.5rem;
+  font-size: 0.9rem !important;
+}
+
+.btn-cancel {
+  background: transparent !important;
+  color: var(--text-sub) !important;
+  border: 1px solid #333 !important;
+  padding: 12px !important;
+  width: 100%;
+  text-transform: uppercase;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+
+  &:hover {
+    border-color: white !important;
+    color: white !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+  }
+}
+
+.select-platform {
+  appearance: none !important;
+  background-color: var(--bg-panel) !important;
+  color: white !important;
+  border: 1px solid #2c3e50 !important;
+  padding: 0.8rem 2.5rem 0.8rem 1rem !important;
+  border-radius: var(--radius-sharp) !important;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 10px center !important;
+}

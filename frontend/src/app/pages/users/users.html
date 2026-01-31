@@ -1,0 +1,54 @@
+<div class="catalog-container">
+  <header class="catalog-header">
+    <div class="title-area">
+      <h1>User Management</h1>
+      <p class="subtitle">Manage permissions and accounts.</p>
+    </div>
+  </header>
+  <hr class="divider">
+
+  @if (users.length === 0) {
+    <div class="empty-state">Loading users...</div>
+  }
+
+  <div class="users-grid">
+    @for (user of users; track user.user_id) {
+      <div class="user-card">
+        
+        <div class="avatar">
+          {{ (user.username || '?').charAt(0) | uppercase }}
+        </div>
+
+        <div class="user-info">
+          <h3>{{ user.username }}</h3>
+          <p class="email">{{ user.email }}</p>
+        </div>
+
+        <div class="controls-row">
+          
+          <div class="custom-select">
+            
+            <button class="select-trigger" (click)="toggleDropdown(user.user_id || 0)">
+              @if (user.role_id === 0) { Admin }
+              @else if (user.role_id === 1) { Manager }
+              @else { User }
+              <span class="arrow">▼</span>
+            </button>
+
+            @if (openDropdownId === user.user_id) {
+              <div class="backdrop" (click)="closeDropdown()"></div>
+              
+              <div class="options-list">
+                <div class="option" (click)="setRole(user, 0)">Admin</div>
+                <div class="option" (click)="setRole(user, 1)">Manager</div>
+                <div class="option" (click)="setRole(user, 2)">User</div>
+              </div>
+            }
+          </div>
+
+          <button class="delete-btn" (click)="deleteUser(user)">🗑️</button>
+        </div>
+      </div>
+    }
+  </div>
+</div>

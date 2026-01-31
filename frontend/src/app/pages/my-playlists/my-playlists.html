@@ -1,0 +1,106 @@
+<div class="catalog-container">
+  
+  <div class="catalog-header">
+    <div class="title-area">
+      <h1>MY PLAYLISTS</h1>
+      <div class="subtitle">Manage your personal collection</div>
+    </div>
+    <button class="create-btn" (click)="toggleCreateForm()">
+      + CREATE
+    </button>
+  </div>
+
+  <div class="playlist-grid">
+    @for (playlist of playlists; track playlist.playlist_id) {
+      <div class="playlist-card" [routerLink]="['/playlists', playlist.playlist_id]">
+        
+        <div class="card-image">
+          @if (playlist.genres && playlist.genres.length > 0) {
+            <span class="genre-badge">{{ playlist.genres[0] }}</span>
+          } @else {
+            <span class="genre-badge">{{ getGenreName(playlist.genre_id) }}</span>
+          }
+
+          @if (playlist.image_path) {
+            <img [src]="'/' + playlist.image_path" alt="Cover" class="cover-image">
+          } @else {
+            <span class="material-icons" style="font-size: 4rem; color: #333;">album</span>
+          }
+          
+          <div class="play-overlay">
+            <span class="material-icons play-icon">play_arrow</span>
+          </div>
+
+          <button class="edit-btn" (click)="editPlaylist($event, playlist)">
+            <span class="material-icons">edit</span>
+          </button>
+          <button class="delete-btn" (click)="deletePlaylist($event, playlist.playlist_id)">
+            <span class="material-icons">delete</span>
+          </button>
+        </div>
+        
+        <div class="card-content">
+          <h3>{{ playlist.name }}</h3>
+          <p class="description">{{ playlist.description || 'No description provided.' }}</p>
+          <div class="card-footer">
+            {{ playlist.is_public ? 'PUBLIC' : 'PRIVATE' }}
+          </div>
+        </div>
+
+      </div>
+    } @empty {
+      <div class="empty-state">
+        <h2>NO PLAYLISTS YET</h2>
+        <p>Start your collection by creating a new playlist.</p>
+      </div>
+    }
+  </div>
+
+  @if (isCreateFormVisible) {
+    <div class="modal-overlay" (click)="toggleCreateForm()">
+      <div class="modal-card" (click)="$event.stopPropagation()">
+        <h2>CREATE PLAYLIST</h2>
+        
+        <input class="modal-input" [(ngModel)]="newPlaylistData.name" placeholder="Playlist Name">
+        
+        <textarea [(ngModel)]="newPlaylistData.description" placeholder="Description (Optional)"></textarea>
+
+        <select class="modal-input" [(ngModel)]="newPlaylistData.genre_id" (ngModelChange)="onGenreChange()">
+          @for (g of genres; track g.genre_id) {
+            <option [value]="g.genre_id">{{ g.name }}</option>
+          }
+        </select>
+
+        <div class="image-upload">
+          <label class="upload-label">
+            <span class="material-icons">add_photo_alternate</span>
+            <span>{{ selectedImage ? 'Change Image' : 'Add Cover Image' }}</span>
+            <input type="file" accept="image/*" (change)="onImageSelected($event)" hidden>
+          </label>
+          @if (imagePreview) {
+            <div class="image-preview">
+              <img [src]="imagePreview" alt="Preview">
+              <button type="button" class="remove-image" (click)="clearImage()">
+                <span class="material-icons">close</span>
+              </button>
+            </div>
+          }
+        </div>
+
+        <div class="visibility-control">
+          <label class="custom-checkbox">
+            <input type="checkbox" [(ngModel)]="newPlaylistData.is_public">
+            <div class="checkbox-box"></div>
+            <span class="checkbox-label">MAKE PUBLIC</span>
+          </label>
+        </div>
+
+        <div class="modal-actions">
+          <button class="cancel-btn" (click)="toggleCreateForm()">CANCEL</button>
+          <button class="save-btn" (click)="submitCreate()">CREATE</button>
+        </div>
+      </div>
+    </div>
+  }
+
+</div>
