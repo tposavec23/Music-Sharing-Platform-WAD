@@ -46,7 +46,8 @@ Uz backend razvoj, stekao sam i osnovno iskustvo rada s **Angularom** te impleme
 
 ## Pokretanje / Demo
 
-**Aplikacija**: http://spider.foi.hr:12160/  
+**Aplikacija**: http://spider.foi.hr:12160/  <br>
+**Napomena**: Poveznica je prethodno bila u funkciji. Na dan 6. 2. došlo je do privremene nemogućnosti povezivanja s poslužiteljem zbog tehničkih poteškoća. Problem je u postupku rješavanja.
 
 Test korisnici (username: password):
 
