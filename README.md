@@ -51,8 +51,6 @@ Uz backend razvoj, stekao sam i osnovno iskustvo rada s **Angularom** te impleme
 Test korisnici (username: password):
 
 - **Običan korisnik** - user: User123
-- **Administrator** - admin: Admin123
-- **Menadžer** - manager: Manager123
 
 ![MusicSharingPlatform-demo-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/10866125-d62e-43fa-8ea1-5e87a592d4ba)
 
