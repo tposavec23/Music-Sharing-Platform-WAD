@@ -27,22 +27,6 @@ Bio sam zadužen za izradu kompletnog backend dijela aplikacije (REST API) koris
 - Evidentiranje aktivnosti kroz audit logove uz mogućnost izvoza u PDF format  
 - Napredno filtriranje i pretraživanje playlista, pjesama i audit logova
 
-## Što sam naučio
-
-
-Tijekom razvoja ovog projekta stekao sam praktično iskustvo u izradi backend sustava, s posebnim naglaskom na rad sa sesijama, autorizacijom te sigurnosnim aspektima aplikacije. Kroz planiranje i implementaciju REST API-ja u **TypeScript/Express** okruženju dodatno sam unaprijedio razumijevanje dizajna API-ja koji je čitljiv, strukturiran i jednostavan za integraciju s frontend aplikacijom. Također sam se upoznao s korištenjem javno dostupnih API-ja za dohvat podataka, primjerice s automatskim preuzimanjem metapodataka pjesama putem YouTube poveznica.
-
-Uz backend razvoj, stekao sam i osnovno iskustvo rada s **Angularom** te implementacijom komunikacije između frontenda i backenda putem API poziva. Dodatno sam razvio razumijevanje implementacije filtriranja i paginacije na backend strani kako bi dohvat podataka bio učinkovitiji i pregledniji. Radom s **SQLite** bazom podataka dodatno sam ojačao znanje relacijskog modeliranja i upravljanja podacima unutar aplikacije. Također sam naučio implementirati izvoz podataka u PDF format (npr. audit logova) korištenjem biblioteke **PDFKit**. Posebno vrijednim smatram iskustvo kontinuirane komunikacije na engleskom jeziku i koordinacije rada u suradnji s kolegom iz Poljske.
-
-## Ideje za unapređenje
-
-- Uređivanje profila korisnika (promjena podataka, lozinke, profilna slika)
-- Komentari i recenzije playlista
-- Kolaborativne playliste (više korisnika uređuje istu playlistu)
-- Unapređenje obrade grešaka i korisničkih poruka na frontend strani
-- Dashboard za autore playlista s prikazom statistika (pregledi, oznake „sviđa mi se” i favoriti kroz vrijeme)
-- Optimizacija korisničkog sučelja za mobilne uređaje i manje ekrane
-- Sustava privatnih poruka (chat) između korisnika
 
 ## Pokretanje / Demo
 
